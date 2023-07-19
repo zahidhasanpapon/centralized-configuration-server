@@ -1,10 +1,17 @@
 spring:
+  application:
+    name: ec-service
+  profiles:
+    active: dev
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/zahidhasanpapon/spring-cloud-config-props.git
-          clone-on-start: true
+          uri: ${EC_CONFIG_GIT_URI}
+          username: ${EC_CONFIG_GIT_USERNAME}
+          password: ${EC_CONFIG_GIT_PASSWORD}
+          default-label: master
+          search-paths: ec-service
 
 server:
-  port: 8888
+  port: 8088
